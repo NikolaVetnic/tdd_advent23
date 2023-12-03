@@ -1,0 +1,2 @@
+Game 1: 1 blue, 1 red
+Game 2: 1 blue, 1 green
