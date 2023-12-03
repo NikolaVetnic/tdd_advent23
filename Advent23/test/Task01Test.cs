@@ -84,4 +84,20 @@ public class Task01Test
         var output = Task01.ParseDocument(input);
         output.Should().BeEquivalentTo(new List<int> { 13, 46, 79 });
     }
+
+    [Fact]
+    public void Test_parsing_a_small_file()
+    {
+        const string filePath = "C:\\Users\\nvojisla\\source\\repos\\Advent23\\Advent23\\res\\task01_test-small.txt";
+        var output = Task01.ParseFile(filePath);
+        output.Should().BeEquivalentTo(new List<int> { 12, 38, 15, 77 });
+    }
+
+    [Fact]
+    public void Test_parsing_a_large_file()
+    {
+        const string filePath = "C:\\Users\\nvojisla\\source\\repos\\Advent23\\Advent23\\res\\task01_input.txt";
+        var output = Task01.ParseFile(filePath);
+        output.Sum().Should().Be(54877);
+    }
 }

@@ -13,4 +13,12 @@ public class Task01
     {
         return input.Split("\n").Select(ParseLine).Where(num => num != -1).ToList();
     }
+
+    public static List<int> ParseFile(string filePath)
+    {
+        if (!File.Exists(filePath))
+            throw new FileNotFoundException();
+
+        return ParseDocument(File.ReadAllText(filePath));
+    }
 }
