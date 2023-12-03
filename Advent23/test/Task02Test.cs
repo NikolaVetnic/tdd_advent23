@@ -25,8 +25,11 @@ public class Task02Test
     [Fact]
     public void Test_creating_an_empty_roll()
     {
-        Action act = () => new Roll(0, 0, 0);
-        act.Should().Throw<ArgumentException>();
+        Action act1 = () => new Roll(0, 0, 0);
+        Action act2 = () => new Roll("0 blue 0 red 0 green");
+
+        act1.Should().Throw<ArgumentException>();
+        act2.Should().Throw<ArgumentException>();
     }
 
     [Fact]

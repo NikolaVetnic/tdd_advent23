@@ -44,6 +44,9 @@ public class Roll
         Blue = blue;
         Red = red;
         Green = green;
+
+        if (Blue == 0 && Red == 0 && Green == 0)
+            throw new ArgumentException("Roll cannot be empty");
     }
 
     public int Blue { get; set; }
