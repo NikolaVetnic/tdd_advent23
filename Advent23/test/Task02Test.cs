@@ -86,7 +86,7 @@ public class Task02Test
     [Fact]
     public void Test_parsing_games_from_file()
     {
-        var games = Games.ParseFromFile("C:\\Users\\nvojisla\\source\\repos\\Advent23\\Advent23\\res\\task02_test-small.txt", new Roll(1, 1, 1));
+        var games = Games.ParseFromFile(AppDomain.CurrentDomain.BaseDirectory + "..\\..\\..\\res\\task02_test-small.txt", new Roll(1, 1, 1));
 
         games.Should().BeEquivalentTo(Games.Create(new List<SingleGame>
         {
@@ -166,14 +166,14 @@ public class Task02Test
     [Fact]
     public void Test_if_sum_of_indices_of_valid_games_is_calculated_correctly_for_larger_input()
     {
-        var games = Games.ParseFromFile("C:\\Users\\nvojisla\\source\\repos\\Advent23\\Advent23\\res\\task02.txt", new Roll(12, 13, 14));
+        var games = Games.ParseFromFile(AppDomain.CurrentDomain.BaseDirectory + "..\\..\\..\\res\\task02.txt", new Roll(12, 13, 14));
         games.GetIdxSumOfValidGames().Should().Be(8);
     }
 
     [Fact]
     public void Test_puzzle_input()
     {
-        var games = Games.ParseFromFile("C:\\Users\\nvojisla\\source\\repos\\Advent23\\Advent23\\res\\task02_input.txt", new Roll(14, 12, 13));
+        var games = Games.ParseFromFile(AppDomain.CurrentDomain.BaseDirectory + "..\\..\\..\\res\\task02_input.txt", new Roll(14, 12, 13));
         games.GetIdxSumOfValidGames().Should().Be(2377);
     }
 }
