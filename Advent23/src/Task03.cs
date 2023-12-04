@@ -1,9 +1,11 @@
-﻿namespace Advent23;
+﻿using Advent23;
+
+namespace Advent23;
 
 public class PartNumber
 {
     public int Number { get; set; }
-    public List<char> AdjacentChars { get; set; } = new List<char>();
+    public List<CharAndCoordinates> AdjacentChars { get; set; } = new List<CharAndCoordinates>();
 
     public PartNumber(int number)
     {
@@ -12,7 +14,21 @@ public class PartNumber
 
     public bool ContainsNonDotCharacter()
     {
-        return AdjacentChars.Exists(c => c != '.');
+        return AdjacentChars.Exists(c => c.Character != '.');
+    }
+}
+
+public class CharAndCoordinates
+{
+    public char Character { get; set; }
+    public int Row { get; set; }
+    public int Col { get; set; }
+
+    public CharAndCoordinates(char character, int row, int col)
+    {
+        Character = character;
+        Row = row;
+        Col = col;
     }
 }
 
@@ -55,9 +71,9 @@ public class FileParser
         return numStr;
     }
 
-    private List<char> GetAdjacentChars(string[] lines, int row, int startCol, int length)
+    private List<CharAndCoordinates> GetAdjacentChars(string[] lines, int row, int startCol, int length)
     {
-        var adjacentChars = new List<char>();
+        var adjacentChars = new List<CharAndCoordinates>();
 
         for (int i = row - 1; i <= row + 1; i++)
         {
@@ -68,11 +84,42 @@ public class FileParser
 
                 if (i >= 0 && i < lines.Length && j >= 0 && j < lines[i].Length)
                 {
-                    adjacentChars.Add(lines[i][j]);
+                    adjacentChars.Add(new(lines[i][j], i, j));
                 }
             }
         }
 
         return adjacentChars;
+    }
+}
+
+public class GearFinder
+{
+    public static int FindGearsRatioSum(List<PartNumber> partNumbers)
+    {
+        var partNumberNextToAsterisk = partNumbers.Where(p => p.AdjacentChars.Exists(c => c.Character == '*')).ToList();
+
+        var output = 0;
+
+        for (int i = 0; i < partNumberNextToAsterisk.Count; i++)
+        {
+            var asteriskInFirstPart = partNumberNextToAsterisk[i].AdjacentChars.First(c => c.Character == '*');
+
+            for (int j = i + 1; j < partNumberNextToAsterisk.Count; j++)
+            {
+                var asteriskInSecondPart = partNumberNextToAsterisk[j].AdjacentChars.First(c => c.Character == '*');
+
+                var rowMatch = asteriskInFirstPart.Row == asteriskInSecondPart.Row;
+                var colMatch = asteriskInFirstPart.Col == asteriskInSecondPart.Col;
+
+                if (rowMatch && colMatch)
+                {
+                    output += partNumberNextToAsterisk[i].Number * partNumberNextToAsterisk[j].Number;
+                    break;
+                }
+            }
+        }
+
+        return output;
     }
 }

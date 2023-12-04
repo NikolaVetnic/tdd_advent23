@@ -102,8 +102,10 @@ public class Task03Test
     {
         var fileParser = new FileParser();
         var partNumbers = fileParser.ParseFile(AppDomain.CurrentDomain.BaseDirectory + "../../../res/task03/task03_demo.txt");
+        var gearsRatioSum = GearFinder.FindGearsRatioSum(partNumbers);
 
         partNumbers.Where(p => p.ContainsNonDotCharacter()).Sum(p => p.Number).Should().Be(4361);
+        gearsRatioSum.Should().Be(467835);
     }
 
     [Fact]
@@ -111,7 +113,9 @@ public class Task03Test
     {
         var fileParser = new FileParser();
         var partNumbers = fileParser.ParseFile(AppDomain.CurrentDomain.BaseDirectory + "../../../res/task03/task03_input.txt");
+        var gearsRatioSum = GearFinder.FindGearsRatioSum(partNumbers);
 
         partNumbers.Where(p => p.ContainsNonDotCharacter()).Sum(p => p.Number).Should().Be(531561);
+        gearsRatioSum.Should().Be(83279367);
     }
 }
