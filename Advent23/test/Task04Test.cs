@@ -29,15 +29,15 @@ public class Task04Test
 
         output.Count.Should().Be(2);
 
-        output[0].WinningNumbers.Should().BeEquivalentTo(new[] { 1 });
-        output[0].MyNumbers.Should().BeEquivalentTo(new[] { 2 });
+        output[0].WinningNumbers.Should().BeEquivalentTo(new[] { 1, 2, 3 });
+        output[0].MyNumbers.Should().BeEquivalentTo(new[] { 4, 5, 6 });
         output[0].MatchCount.Should().Be(0);
         output[0].Result.Should().Be(0);
 
-        output[1].WinningNumbers.Should().BeEquivalentTo(new[] { 1 });
-        output[1].MyNumbers.Should().BeEquivalentTo(new[] { 1 });
-        output[1].MatchCount.Should().Be(1);
-        output[1].Result.Should().Be(1);
+        output[1].WinningNumbers.Should().BeEquivalentTo(new[] { 1, 2, 3 });
+        output[1].MyNumbers.Should().BeEquivalentTo(new[] { 1, 2, 3 });
+        output[1].MatchCount.Should().Be(3);
+        output[1].Result.Should().Be(4);
     }
 
     [Fact]
