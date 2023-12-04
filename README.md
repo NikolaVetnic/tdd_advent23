@@ -5,3 +5,4 @@
 **Day 1: Trebuchet?!** - [implementation](./Advent23/src/Task01.cs) and [tests](./Advent23/test/Task01Test.cs).  
 **Day 2: Cube Conundrum** - [implementation](./Advent23/src/Task02.cs) and [tests](./Advent23/test/Task02Test.cs).  
 **Day 3: Gear Ratios** - [implementation](./Advent23/src/Task03.cs) and [tests](./Advent23/test/Task03Test.cs).  
+**Day 4: Scratchcards** - [implementation](./Advent23/src/Task04.cs) and [tests](./Advent23/test/Task04Test.cs).  
