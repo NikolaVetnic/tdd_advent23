@@ -14,7 +14,7 @@ public class Task04
 
     private static List<ScratchcardResult> ProcessInput(string input)
     {
-        var lines = input.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+        var lines = input.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
         var scratchcardResults = new List<ScratchcardResult>();
 
@@ -35,7 +35,7 @@ public class Task04
 
     private static List<ScratchcardResult> ProcessInputComplex(string input)
     {
-        var lines = input.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+        var lines = input.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
         var linesAndCounts = lines.Select(line => new LineAndCount { Line = line, Count = 1 }).ToList();
 
         var scratchcardResults = new List<ScratchcardResult>();
